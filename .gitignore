@@ -1,0 +1,8 @@
+# DB接続情報
+config_ferrous.php
+.env
+
+# PHP用
+vendor/
+*.log
+*.cache

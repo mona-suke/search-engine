@@ -49,11 +49,9 @@
 
 					<div class="tab_contents_box" checked> 
 						<input id="ferrous" type="radio" name="tab_menu" checked>
-						<label class="tab_menu" for="ferrous">鉄相場</label>
+						<label class="tab_menu" for="ferrous">ferrous</label>
 						<input id="nonferrous" type="radio" name="tab_menu">
-						<label class="tab_menu" for="nonferrous">非鉄相場</label>
-						<input id="overseas" type="radio" name="tab_menu">
-						<label class="tab_menu" for="overseas">海外相場</label>
+						<label class="tab_menu" for="nonferrous">nonferrous</label>
 						<div id="ferrous_content" class="tab_content">
 							<div class="tab-content"> 
 
@@ -61,7 +59,7 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main1" class="categories" value="clicked">
-										<label for="fer_main1">鉄スクラップ</label>
+										<label for="fer_main1">species1</label>
 										<ul class="submenu" onClick="get_species_id(event)">
 
 										<?php
@@ -74,7 +72,7 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main2" class="categories" value="clicked">
-										<label for="fer_main2">日本鉄スクラップ総合価格</label>
+										<label for="fer_main2">species2</label>
 
 											<ul class="submenu" onClick="get_species_id(event)">
 												<?php
@@ -86,7 +84,7 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main3" class="categories" value="clicked">
-										<label for="fer_main3">鉄スクラップ湾岸価格</label>
+										<label for="fer_main3">species3</label>
 											<ul class="submenu" onClick="get_species_id(event)">
 												<?php
 													set_list($species_result,'wangan');
@@ -97,7 +95,7 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main4" class="categories" value="clicked">
-										<label for="fer_main4">棒鋼</label>
+										<label for="fer_main4">species4</label>
 
 										<ul class="submenu" ></ul>
 									</form>
@@ -105,133 +103,11 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main5" class="categories" value="clicked">
-										<label for="fer_main5">パイプ</label>
+										<label for="fer_main5">species5</label>
 
 										<ul class="submenu" ></ul>
 									</form>
 								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main6" class="categories" value="clicked">
-										<label for="fer_main6">形鋼</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main7" class="categories" value="clicked">
-										<label for="fer_main7">コラム</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main8" class="categories" value="clicked">
-										<label for="fer_main8">薄板</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main9" class="categories" value="clicked">
-										<label for="fer_main9">厚板</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main10" class="categories" value="clicked">
-										<label for="fer_main10">カラー鋼板</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main11" class="categories" value="clicked">
-										<label for="fer_main11">軽量形鋼</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main12" class="categories" value="clicked">
-										<label for="fer_main12">線材製品</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main13" class="categories" value="clicked">
-										<label for="fer_main13">特殊鋼</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main14" class="categories" value="clicked">
-										<label for="fer_main14">合金鉄</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main15" class="categories" value="clicked">
-										<label for="fer_main15">溶接材料</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main16" class="categories" value="clicked">
-										<label for="fer_main16">ステンレス</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main17" class="categories" value="clicked">
-										<label for="fer_main17">ボルト</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main18" class="categories" value="clicked">
-										<label for="fer_main18">銅線</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main19" class="categories" value="clicked">
-										<label for="fer_main19">金網</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="fer_main20" class="categories" value="clicked">
-										<label for="fer_main20">特殊釘</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-							</ul>
-
 						</div> 
 						</div>
 						<div id="nonferrous_content" class="tab_content">
@@ -241,7 +117,7 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="non_main1" class="categories" value="clicked">
-										<label for="non_main1">建値</label>
+										<label for="non_main1">species1</label>
 
 										<ul class="submenu" ></ul>
 									</form>
@@ -249,7 +125,7 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="non_main2" class="categories" value="clicked">
-										<label for="non_main2">非鉄スクラップ</label>
+										<label for="non_main2">species2</label>
 
 										<ul class="submenu" ></ul>
 									</form>
@@ -257,90 +133,15 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="non_main3" class="categories" value="clicked">
-										<label for="non_main3">地金</label>
+										<label for="non_main3">species3</label>
 
 										<ul class="submenu" ></ul>
 									</form>
 								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="non_main4" class="categories" value="clicked">
-										<label for="non_main4">伸銅品</label>
-
-										<ul class="submenu" onClick="get_species_id(event)">
-
-											<?php
-												try {
-														require_once 'config.php';
-
-														$sql = "SELECT * FROM species_id ";
-
-														$stmt = $dbh->query($sql);
-														foreach($stmt as $record){
-															echo "<li data-id='{$record['species_id']}'>{$record['species_name']}</li>";
-															}
-											} catch(PDOException $e) {
-											  echo "エラーメッセージ : " . $e -> getMessage();
-											}	
-											?>
-										</ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="non_main5" class="categories" value="clicked">
-										<label for="non_main5">軽圧品</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="non_main6" class="categories" value="clicked">
-										<label for="non_main6">鉛錫製品</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="non_main7" class="categories" value="clicked">
-										<label for="non_main7">電線</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="non_main8" class="categories" value="clicked">
-										<label for="non_main8">貴金属</label>
-
-										<ul class="submenu" ></ul>
-									</form>
-								</li>
-							</ul>
 
 						</div> 
 						</div>
-						<div id="overseas_content" class="tab_content">
-							<div class="tab-content"> 
 
-							<ul>
-								<li>
-									<form method="post">
-										<input type="checkbox" id="os_main1" class="categories" value="clicked">
-										<label for="os_main1">LME 3m Electronic Commodity Forward</label>
-										<ul class="submenu"  onClick="get_species_id(event)">
-											<li class="lme" data-id="1">copper</li>
-										</ul>
-									</form>
-								</li>
-								<li>
-
-							</ul>
-
-						</div> 
-						</div>
 					</div>
 
 				</div>
@@ -382,8 +183,8 @@
 				<div class="result_box"  id ="myTable">
 					<table class ="species_name" id="trg_name"></table>
 					<table hidden>
-						<tr><td>【著作権について】産業新聞社の許可なく配信データを転送、複製、販売などの行為をすることはご遠慮願います。</td></tr>
-						<tr><td>産業新聞社調べ、調べ日ベース</td></tr>
+						<tr><td>【著作権について】</td></tr>
+						<tr><td>〇〇調べ、調べ日ベース</td></tr>
 					</table>
 					<div class="result_table"></div>
 

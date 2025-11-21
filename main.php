@@ -12,7 +12,9 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
  <!--  /独自ライブラリ読み込み -->
-
+ <!--  グラフ用ライブラリ（echart） -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+ <!--  グラフ用ライブラリ（echart） -->
 </head>
 	
 <body>
@@ -29,364 +31,434 @@
   		echo "エラーメッセージ : " . $e -> getMessage();
 		}	
 	?>
-	<div>
-		<div class="navi_box">
-	
-			<div class="tab_contents_box" checked> 
-				<input id="ferrous" type="radio" name="tab_menu" checked>
-				<label class="tab_menu" for="ferrous">鉄相場</label>
-				<input id="nonferrous" type="radio" name="tab_menu">
-				<label class="tab_menu" for="nonferrous">非鉄相場</label>
-				<input id="overseas" type="radio" name="tab_menu">
-				<label class="tab_menu" for="overseas">海外相場</label>
-				<div id="ferrous_content" class="tab_content">
-					<div class="tab-content"> 
+	<div class="wrapper">
+		<div class="inwrapper">
+			<div class="chartc_head">
 
-					<ul>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main1" class="categories" value="clicked">
-								<label for="fer_main1">鉄スクラップ</label>
-								<ul class="submenu" onClick="get_species_id(event)">
-
-								<?php
-									set_list($species_result,'scrap');
-								?>
-								</ul>
-							</form>
-
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main2" class="categories" value="clicked">
-								<label for="fer_main2">日本鉄スクラップ総合価格</label>
-								
-									<ul class="submenu" onClick="get_species_id(event)">
-										<?php
-											set_list($species_result,'jp_scrap');
-										?>
-									</ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main3" class="categories" value="clicked">
-								<label for="fer_main3">鉄スクラップ湾岸価格</label>
-									<ul class="submenu" onClick="get_species_id(event)">
-										<?php
-											set_list($species_result,'wangan');
-										?>
-									</ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main4" class="categories" value="clicked">
-								<label for="fer_main4">棒鋼</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main5" class="categories" value="clicked">
-								<label for="fer_main5">パイプ</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main6" class="categories" value="clicked">
-								<label for="fer_main6">形鋼</label>
-							
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main7" class="categories" value="clicked">
-								<label for="fer_main7">コラム</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main8" class="categories" value="clicked">
-								<label for="fer_main8">薄板</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main9" class="categories" value="clicked">
-								<label for="fer_main9">厚板</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main10" class="categories" value="clicked">
-								<label for="fer_main10">カラー鋼板</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main11" class="categories" value="clicked">
-								<label for="fer_main11">軽量形鋼</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main12" class="categories" value="clicked">
-								<label for="fer_main12">線材製品</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main13" class="categories" value="clicked">
-								<label for="fer_main13">特殊鋼</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main14" class="categories" value="clicked">
-								<label for="fer_main14">合金鉄</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main15" class="categories" value="clicked">
-								<label for="fer_main15">溶接材料</label>
-							
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main16" class="categories" value="clicked">
-								<label for="fer_main16">ステンレス</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main17" class="categories" value="clicked">
-								<label for="fer_main17">ボルト</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main18" class="categories" value="clicked">
-								<label for="fer_main18">銅線</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main19" class="categories" value="clicked">
-								<label for="fer_main19">金網</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="fer_main20" class="categories" value="clicked">
-								<label for="fer_main20">特殊釘</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-					</ul>
-
-				</div> 
-				</div>
-				<div id="nonferrous_content" class="tab_content">
-					<div class="tab-content"> 
-
-					<ul>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="non_main1" class="categories" value="clicked">
-								<label for="non_main1">建値</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="non_main2" class="categories" value="clicked">
-								<label for="non_main2">非鉄スクラップ</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="non_main3" class="categories" value="clicked">
-								<label for="non_main3">地金</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="non_main4" class="categories" value="clicked">
-								<label for="non_main4">伸銅品</label>
-							
-								<ul class="submenu" onClick="get_species_id(event)">
-
-									<?php
-										try {
-												require_once 'config.php';
-
-												$sql = "SELECT * FROM species_id ";
-
-												$stmt = $dbh->query($sql);
-												foreach($stmt as $record){
-													echo "<li data-id='{$record['species_id']}'>{$record['species_name']}</li>";
-													}
-									} catch(PDOException $e) {
-									  echo "エラーメッセージ : " . $e -> getMessage();
-									}	
-									?>
-								</ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="non_main5" class="categories" value="clicked">
-								<label for="non_main5">軽圧品</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="non_main6" class="categories" value="clicked">
-								<label for="non_main6">鉛錫製品</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="non_main7" class="categories" value="clicked">
-								<label for="non_main7">電線</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="non_main8" class="categories" value="clicked">
-								<label for="non_main8">貴金属</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-					</ul>
-
-				</div> 
-				</div>
-				<div id="overseas_content" class="tab_content">
-					<div class="tab-content"> 
-
-					<ul>
-						<li>
-							<form method="post">
-								<input type="checkbox" id="os_main1" class="categories" value="clicked">
-								<label for="os_main1">LME</label>
-								
-								<ul class="submenu" ></ul>
-							</form>
-						</li>
-						<li>
-
-					</ul>
-
-				</div> 
+				<a href="https://www.japanmetal.com/">
+					<img src="/datasearch/images/web_logo.png" >
+				</a>
+				<div class="wheel">
+					<a href="https://www.japanmetal.com/">
+						<img src="/datasearch/images/wheel.png" >
+					</a>	
 				</div>
 			</div>
+			<div class="wrapper-left">
+				<div class="navi_box">
 
+					<div class="tab_contents_box" checked> 
+						<input id="ferrous" type="radio" name="tab_menu" checked>
+						<label class="tab_menu" for="ferrous">鉄相場</label>
+						<input id="nonferrous" type="radio" name="tab_menu">
+						<label class="tab_menu" for="nonferrous">非鉄相場</label>
+						<input id="overseas" type="radio" name="tab_menu">
+						<label class="tab_menu" for="overseas">海外相場</label>
+						<div id="ferrous_content" class="tab_content">
+							<div class="tab-content"> 
+
+							<ul>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main1" class="categories" value="clicked">
+										<label for="fer_main1">鉄スクラップ</label>
+										<ul class="submenu" onClick="get_species_id(event)">
+
+										<?php
+											set_list($species_result,'scrap');
+										?>
+										</ul>
+									</form>
+
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main2" class="categories" value="clicked">
+										<label for="fer_main2">日本鉄スクラップ総合価格</label>
+
+											<ul class="submenu" onClick="get_species_id(event)">
+												<?php
+													set_list($species_result,'jp_scrap');
+												?>
+											</ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main3" class="categories" value="clicked">
+										<label for="fer_main3">鉄スクラップ湾岸価格</label>
+											<ul class="submenu" onClick="get_species_id(event)">
+												<?php
+													set_list($species_result,'wangan');
+												?>
+											</ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main4" class="categories" value="clicked">
+										<label for="fer_main4">棒鋼</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main5" class="categories" value="clicked">
+										<label for="fer_main5">パイプ</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main6" class="categories" value="clicked">
+										<label for="fer_main6">形鋼</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main7" class="categories" value="clicked">
+										<label for="fer_main7">コラム</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main8" class="categories" value="clicked">
+										<label for="fer_main8">薄板</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main9" class="categories" value="clicked">
+										<label for="fer_main9">厚板</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main10" class="categories" value="clicked">
+										<label for="fer_main10">カラー鋼板</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main11" class="categories" value="clicked">
+										<label for="fer_main11">軽量形鋼</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main12" class="categories" value="clicked">
+										<label for="fer_main12">線材製品</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main13" class="categories" value="clicked">
+										<label for="fer_main13">特殊鋼</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main14" class="categories" value="clicked">
+										<label for="fer_main14">合金鉄</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main15" class="categories" value="clicked">
+										<label for="fer_main15">溶接材料</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main16" class="categories" value="clicked">
+										<label for="fer_main16">ステンレス</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main17" class="categories" value="clicked">
+										<label for="fer_main17">ボルト</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main18" class="categories" value="clicked">
+										<label for="fer_main18">銅線</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main19" class="categories" value="clicked">
+										<label for="fer_main19">金網</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main20" class="categories" value="clicked">
+										<label for="fer_main20">特殊釘</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+							</ul>
+
+						</div> 
+						</div>
+						<div id="nonferrous_content" class="tab_content">
+							<div class="tab-content"> 
+
+							<ul>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main1" class="categories" value="clicked">
+										<label for="non_main1">建値</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main2" class="categories" value="clicked">
+										<label for="non_main2">非鉄スクラップ</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main3" class="categories" value="clicked">
+										<label for="non_main3">地金</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main4" class="categories" value="clicked">
+										<label for="non_main4">伸銅品</label>
+
+										<ul class="submenu" onClick="get_species_id(event)">
+
+											<?php
+												try {
+														require_once 'config.php';
+
+														$sql = "SELECT * FROM species_id ";
+
+														$stmt = $dbh->query($sql);
+														foreach($stmt as $record){
+															echo "<li data-id='{$record['species_id']}'>{$record['species_name']}</li>";
+															}
+											} catch(PDOException $e) {
+											  echo "エラーメッセージ : " . $e -> getMessage();
+											}	
+											?>
+										</ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main5" class="categories" value="clicked">
+										<label for="non_main5">軽圧品</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main6" class="categories" value="clicked">
+										<label for="non_main6">鉛錫製品</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main7" class="categories" value="clicked">
+										<label for="non_main7">電線</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main8" class="categories" value="clicked">
+										<label for="non_main8">貴金属</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+							</ul>
+
+						</div> 
+						</div>
+						<div id="overseas_content" class="tab_content">
+							<div class="tab-content"> 
+
+							<ul>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="os_main1" class="categories" value="clicked">
+										<label for="os_main1">LME 3m Electronic Commodity Forward</label>
+										<ul class="submenu"  onClick="get_species_id(event)">
+											<li class="lme" data-id="1">copper</li>
+										</ul>
+									</form>
+								</li>
+								<li>
+
+							</ul>
+
+						</div> 
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="wrapper-right">
+				<div class="form_box">
+
+					<div class="form">
+						<form method="post">
+							<p id="output"></p>
+							<input type="hidden" name="species_id" id="species_id" value="">
+							<input type="hidden" name="table_name" id="table_name" value="">
+							<input type="hidden" name="genre_name" id="genre_name" value="">
+							<div class="form_content">
+								<label for="duration">期間：</label>
+								<input type="date" name="start_date" value="2021-01-01" style="padding: 8px;"/>～<input type="date" name="end_date" is="default-date" style="padding: 8px;"/>
+							</div>
+							<div  class="form_content">
+								<label for="duration">地域：</label>
+								<!-- Select2で作るマルチセレクトボックス -->
+								<select class="js-multiple" multiple="multiple" name="regions_list[]" style="width: 500px;" >
+
+								</select>
+							</div>
+							<div>
+								<button type="submit" class="pattern-buttons"  name="add">検索</button>
+							</div>
+							<div id ="selected_tags"></div>
+						</form>
+
+					</div>
+
+
+					<div class="option_frame">
+						<button type="button" class="pattern-buttons" id="dl-xlsx" >Download XLSX</button>
+					</div>	
+				</div>
+
+				<div class="result_box"  id ="myTable">
+					<table class ="species_name" id="trg_name"></table>
+					<table hidden>
+						<tr><td>【著作権について】産業新聞社の許可なく配信データを転送、複製、販売などの行為をすることはご遠慮願います。</td></tr>
+						<tr><td>産業新聞社調べ、調べ日ベース</td></tr>
+					</table>
+					<div class="result_table"></div>
+
+				</div>
+			</div>
+	
 		</div>
 	</div>
-	<div>
-		<div class="table_box">
-
-			<div class="form">
-				<form method="post">
-					<p id="output"></p>
-					<input type="hidden" name="species_id" id="species_id" value="">
-					<input type="hidden" name="table_name" id="table_name" value="">
-					<input type="hidden" name="genre_name" id="genre_name" value="">
-					<div class="form_content">
-						<label for="duration">期間：</label>
-						<input type="date" name="start_date" value="2021-01-01" style="padding: 8px;"/>～<input type="date" name="end_date" is="default-date" style="padding: 8px;"/>
-					</div>
-					<div  class="form_content">
-						<label for="duration">地域：</label>
-						<!-- Select2で作るマルチセレクトボックス -->
-						<select class="js-multiple" multiple="multiple" name="regions_list[]" style="width: 500px; color: #000000;" >
-
-						</select>
-				  	</div>
-					<div>
-						<button type="submit" class="pattern-buttons"  name="add">検索</button>
-					</div>
-					<div id ="selected_tags"></div>
-				</form>
-
-			</div>
-			<div class="option_frame">
-				<button type="button" class="pattern-buttons" id="dl-xlsx" >Download XLSX</button>
-			</div>	
-		</div>
-
-		<div class="result_box"  id ="myTable">
-			<table class ="species_name" id="trg_name"></table>
-			<table hidden>
-				<tr><td>【著作権について】許可なく配信データを転送、複製、販売などの行為をすることはご遠慮願います。</td></tr>
-				<tr><td>調べ日ベース</td></tr>
-			</table>
-			
-			<div class="result_table"></div>
-		</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 	<script src="export_excel.js"></script>	
 	
+	<script type="text/javascript" src="echarts.js"></script>
 	<script>
 		// 検索ボタンでデータを取得
 	$('form').on('submit', function(e){
 		e.preventDefault(); // ページリロードを止める
 		const species_id = $('#species_id').val();
-		
+		const genre = $('#genre_name').val();
+		// ★ここに品種リスト取得いれる
 		const trg_species = document.querySelectorAll('#selected_tags span');
+		// data-idの番号を取得して配列化
 		const species_lists = Array.from(trg_species).map((x) => x.dataset.id);
+		
+		if ($('#table_name').val().match(/lme/)){
+			fetch_os_data('lmecopper');
 
-		fetchtabledata(0,species_lists);
+		}else{
+			fetchtabledata(0,species_lists);			
+		}
+
 	});
 	</script>
+	<script>
+		function fetch_os_data(table,num_limit=null){
+			const start   = $('input[name="start_date"]').val();
+			const end     = $('input[name="end_date"]').val();
+			$.ajax({
+				url: 'get_data_os.php',
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					table: table,
+					start_date: start,
+					end_date: end,
+					limit: num_limit
+				}
+			}).done(function(response){
+				
+				let columns=response.columns;
+				let datas=response.data;
+				let ma_datas = response.ma_datas;
+				let html = "<table class='table_body'><thead  style='color: #FFFFFF;'><tr>";
+				columns.forEach(col => {
+					if (col !='data_id'){
+						html += `<th>${col}</th>`;
+						}
+					});
+					
+				html += '</thread><tbody>'
+				datas.forEach(data=>{
+					html += `<tr><td>${data['date']}</td><td>${data['open']}</td><td>${data['high']}</td><td>${data['low']}</td><td>${data['close']}</td></tr>`
+				});
+				
+				html += '</tbody></table>';
+				console.log(ma_datas);
+				$(".result_table").html(html);
 
+			}).fail(function(response){
+
+				$(".result_table").html(response);
+			});	
+
+		}
+	</script>
 	<script>
 		const tagcontainer = document.getElementById('selected_tags');
 		// 既存: species_id をセット
@@ -396,7 +468,7 @@
 			if (target.tagName === 'LI') {
 				const speciesID = target.getAttribute('data-id');
 				const table_name = target.getAttribute('class');
-				document.getElementById('output').textContent = speciesID + ' : ' + target.textContent +'(' + table_name + ')';
+				//document.getElementById('output').textContent = speciesID + ' : ' + target.textContent +'(' + table_name + ')';
 				document.getElementById('species_id').value = speciesID;
 				document.getElementById('table_name').value = table_name;
 				//$(".species_name").html('<tr><td>' + ganre_name + '―' + target.textContent + '</td></tr>');
@@ -407,7 +479,7 @@
 				const tag = document.createElement('span');
 				tag.className = 'tag';
 				tag.setAttribute('data-id', speciesID); // 作ったタグにdata-id属性を持たせる（品種idの番号ふる）
-				tag.innerHTML = `${target.textContent}<button type="button" class="remove-tag">×</button>`;
+				tag.innerHTML = `<button type="button" class="remove-tag">×|</button>${target.textContent}`;
 				tagcontainer.appendChild(tag);
 				
 				const trg_species = document.querySelectorAll('#selected_tags span');
@@ -474,7 +546,7 @@
 						break;
 				}
 										// ヘッダー作成（1行目：日付 + 品種ごとの colspan、2行目：各地域）
-				html = "<table border='1'><thead  style='color: #FFFFFF;'><tr>";
+				html = "<table class='table_body'><thead  style='color: #FFFFFF;'><tr>";
 				html += '<th rowspan="2">日付</th>';
 				species.forEach(spec => {
 				html += `<th class="species" colspan="${columns.length}">${spec}</th>`;
@@ -503,7 +575,12 @@
 								// 各地域の値（0とかfalsy値）も表示したいからhasOwnPropertyで判定
 								const has = Object.prototype.hasOwnProperty.call(specObj, col);
 								const val = has ? specObj[col] : '';
-								html += `<td>${val}</td>`;
+								if (val == 0){
+									html += `<td>―</td>`;
+								}else{
+									html += `<td>${val}</td>`;
+								}
+								
 							});
 							});
 						html += '</tr>';
@@ -518,6 +595,7 @@
 			});	
 		}
 	</script>
+
 	<script>
 		//今日日付けいれる
 		class InputDateDefault extends HTMLInputElement {
@@ -589,4 +667,3 @@
 
 </body>
 </html>
-

@@ -1,3 +1,5 @@
+//データベースから取得する場合のサンプル
+
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
@@ -10,8 +12,6 @@ try {
 
 	$species_id = array_values(array_filter($species_id, 'strlen'));
 	$in_spc=implode(',', array_fill(0, count($species_id), '?'));
-	//echo "console.log('" . addslashes($in_spc) . "');";
-	//echo "console.log('" . addslashes($species_id) . "');";
 
     if (!$species_id) {
         echo json_encode([]);
@@ -161,4 +161,5 @@ try {
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()], JSON_UNESCAPED_UNICODE);
+
 }

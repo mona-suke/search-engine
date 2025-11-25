@@ -1,3 +1,5 @@
+//データベースから品種を取得する場合のサンプル
+
 <?php
 	function set_list($lists,$genre_name){
 		try {
@@ -10,4 +12,5 @@
 		echo "エラーメッセージ : " . $e -> getMessage();
 		}	
 	}
+
 ?>

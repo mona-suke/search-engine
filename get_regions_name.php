@@ -1,3 +1,5 @@
+//データベースから地域名を取得する場合のサンプル
+
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
@@ -11,4 +13,5 @@ try {
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()], JSON_UNESCAPED_UNICODE);
+
 }

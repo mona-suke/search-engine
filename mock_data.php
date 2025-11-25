@@ -5,7 +5,7 @@ header('Content-Type: application/json; charset=utf-8');
 
 try {
 
-    // POSTから値取得（使わなくても互換性のため残す）
+    // POSTから値取得（デモでは不要）
     $table_name   = $_POST['table'] ?? 'demo_table';
     $species_ids  = $_POST['species_list'] ?? ['1', '2'];
     $regions_list = $_POST['regions_list'] ?? ['1', '2'];
@@ -13,7 +13,7 @@ try {
     $end_date     = $_POST['end_date'] ?? date('Y-m-d');
     $limit        = isset($_POST['limit']) ? (int)$_POST['limit'] : 30;
 
-    $hasRegion = true; // デモでは regions を有効に
+    $hasRegion = true; // デモでは regions を有効
 
     // デモ用マスタ
     $species_master = [
@@ -105,4 +105,5 @@ try {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()], JSON_UNESCAPED_UNICODE);
 }
+
 

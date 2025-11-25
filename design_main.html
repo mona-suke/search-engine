@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>検索</title>
-<link href="main.css" rel="stylesheet" type="text/css">
+<link href="Sample_main.css" rel="stylesheet" type="text/css">
 <!--   jQueryライブラリ読み込み -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!--  /jQueryライブラリ読み込み -->
@@ -12,20 +12,9 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
  <!--  /独自ライブラリ読み込み -->
- <!--  グラフ用ライブラリ（echart） -->
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
- <!--  グラフ用ライブラリ（echart） -->
+
 </head>
 	
-<body>
-	<?php
-	try {
-			require_once 'mock_sp.php';
-
-	} catch(PDOException $e) {
-  		echo "エラーメッセージ : " . $e -> getMessage();
-		}	
-	?>
 	<div class="wrapper">
 		<div class="inwrapper">
 			<div class="chartc_head">
@@ -499,3 +488,4 @@
 
 </body>
 </html>
+

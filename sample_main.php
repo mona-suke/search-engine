@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>検索</title>
-<link href="sample_main.css" rel="stylesheet" type="text/css">
+<link href="main.css" rel="stylesheet" type="text/css">
 <!--   jQueryライブラリ読み込み -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!--  /jQueryライブラリ読み込み -->
@@ -18,14 +18,23 @@
 </head>
 	
 <body>
+	<?php
+	try {
+			require_once 'mock_sp.php';
 
+	} catch(PDOException $e) {
+  		echo "エラーメッセージ : " . $e -> getMessage();
+		}	
+	?>
 	<div class="wrapper">
 		<div class="inwrapper">
 			<div class="chartc_head">
 
-				<img src="/datasearch/images/sample.png" >
+
+					<img src="/datasearch/images/sample.png" >
 				<div class="wheel">
-					<img src="/datasearch/images/wheel.png" >	
+						<img src="/datasearch/images/wheel.png" >
+
 				</div>
 			</div>
 			<div class="wrapper-left">
@@ -33,9 +42,9 @@
 
 					<div class="tab_contents_box" checked> 
 						<input id="ferrous" type="radio" name="tab_menu" checked>
-						<label class="tab_menu" for="ferrous">ferrous</label>
+						<label class="tab_menu" for="ferrous">A相場</label>
 						<input id="nonferrous" type="radio" name="tab_menu">
-						<label class="tab_menu" for="nonferrous">nonferrous</label>
+						<label class="tab_menu" for="nonferrous">B相場</label>
 						<div id="ferrous_content" class="tab_content">
 							<div class="tab-content"> 
 
@@ -43,15 +52,12 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main1" class="categories" value="clicked">
-										<label for="fer_main1">species1</label>
+										<label for="fer_main1">A</label>
 										<ul class="submenu" onClick="get_species_id(event)">
 
-											<li class='ferrous' data-id='0'>A</li>
-											<li class='ferrous' data-id='1'>B</li>
-											<li class='ferrous' data-id='2'>C</li>
-											<li class='ferrous' data-id='3'>D</li>
-											<li class='ferrous' data-id='4'>E</li>
-											<li class='ferrous' data-id='5'>F</li>
+										<?php
+											set_list('scrap');
+										?>
 										</ul>
 									</form>
 
@@ -59,36 +65,30 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main2" class="categories" value="clicked">
-										<label for="fer_main2">species2</label>
+										<label for="fer_main2">B</label>
 
 											<ul class="submenu" onClick="get_species_id(event)">
-												<li class='ferrous' data-id='6'>A</li>
-												<li class='ferrous' data-id='7'>B</li>
-												<li class='ferrous' data-id='8'>C</li>
-												<li class='ferrous' data-id='9'>D</li>
-												<li class='ferrous' data-id='10'>E</li>
-												<li class='ferrous' data-id='11'>F</li>
+												<?php
+													set_list('jp_scrap');
+												?>
 											</ul>
 									</form>
 								</li>
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main3" class="categories" value="clicked">
-										<label for="fer_main3">species3</label>
+										<label for="fer_main3">C</label>
 											<ul class="submenu" onClick="get_species_id(event)">
-												<li class='ferrous' data-id='12'>A</li>
-												<li class='ferrous' data-id='13'>B</li>
-												<li class='ferrous' data-id='14'>C</li>
-												<li class='ferrous' data-id='15'>D</li>
-												<li class='ferrous' data-id='16'>E</li>
-												<li class='ferrous' data-id='17'>F</li>
+												<?php
+													set_list('wangan');
+												?>
 											</ul>
 									</form>
 								</li>
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main4" class="categories" value="clicked">
-										<label for="fer_main4">species4</label>
+										<label for="fer_main4">D</label>
 
 										<ul class="submenu" ></ul>
 									</form>
@@ -96,11 +96,54 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="fer_main5" class="categories" value="clicked">
-										<label for="fer_main5">species5</label>
+										<label for="fer_main5">E</label>
 
 										<ul class="submenu" ></ul>
 									</form>
 								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main6" class="categories" value="clicked">
+										<label for="fer_main6">F</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main7" class="categories" value="clicked">
+										<label for="fer_main7">G</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main8" class="categories" value="clicked">
+										<label for="fer_main8">H</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main9" class="categories" value="clicked">
+										<label for="fer_main9">I</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="fer_main10" class="categories" value="clicked">
+										<label for="fer_main10">J</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+
+							</ul>
+
 						</div> 
 						</div>
 						<div id="nonferrous_content" class="tab_content">
@@ -110,7 +153,7 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="non_main1" class="categories" value="clicked">
-										<label for="non_main1">species1</label>
+										<label for="non_main1">A</label>
 
 										<ul class="submenu" ></ul>
 									</form>
@@ -118,7 +161,7 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="non_main2" class="categories" value="clicked">
-										<label for="non_main2">species2</label>
+										<label for="non_main2">B</label>
 
 										<ul class="submenu" ></ul>
 									</form>
@@ -126,11 +169,52 @@
 								<li>
 									<form method="post">
 										<input type="checkbox" id="non_main3" class="categories" value="clicked">
-										<label for="non_main3">species3</label>
+										<label for="non_main3">C</label>
 
 										<ul class="submenu" ></ul>
 									</form>
 								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main4" class="categories" value="clicked">
+										<label for="non_main4">D</label>
+
+	
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main5" class="categories" value="clicked">
+										<label for="non_main5">E</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main6" class="categories" value="clicked">
+										<label for="non_main6">F</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main7" class="categories" value="clicked">
+										<label for="non_main7">G</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+								<li>
+									<form method="post">
+										<input type="checkbox" id="non_main8" class="categories" value="clicked">
+										<label for="non_main8">H</label>
+
+										<ul class="submenu" ></ul>
+									</form>
+								</li>
+							</ul>
 
 						</div> 
 						</div>
@@ -176,8 +260,8 @@
 				<div class="result_box"  id ="myTable">
 					<table class ="species_name" id="trg_name"></table>
 					<table hidden>
-						<tr><td>【著作権について】</td></tr>
-						<tr><td>〇〇調べ、調べ日ベース</td></tr>
+						<tr><td>【著作権について】産業新聞社の許可なく配信データを転送、複製、販売などの行為をすることはご遠慮願います。</td></tr>
+						<tr><td>産業新聞社調べ、調べ日ベース</td></tr>
 					</table>
 					<div class="result_table"></div>
 
@@ -202,57 +286,11 @@
 		// data-idの番号を取得して配列化
 		const species_lists = Array.from(trg_species).map((x) => x.dataset.id);
 		
-		if ($('#table_name').val().match(/lme/)){
-			fetch_os_data('lmecopper');
-
-		}else{
-			fetchtabledata(0,species_lists);			
-		}
+		fetchtabledata(0,species_lists);			
 
 	});
 	</script>
-	<script>
-		function fetch_os_data(table,num_limit=null){
-			const start   = $('input[name="start_date"]').val();
-			const end     = $('input[name="end_date"]').val();
-			$.ajax({
-				url: 'get_data_os.php',
-				type: 'POST',
-				dataType: 'json',
-				data: {
-					table: table,
-					start_date: start,
-					end_date: end,
-					limit: num_limit
-				}
-			}).done(function(response){
-				
-				let columns=response.columns;
-				let datas=response.data;
-				let ma_datas = response.ma_datas;
-				let html = "<table class='table_body'><thead  style='color: #FFFFFF;'><tr>";
-				columns.forEach(col => {
-					if (col !='data_id'){
-						html += `<th>${col}</th>`;
-						}
-					});
-					
-				html += '</thread><tbody>'
-				datas.forEach(data=>{
-					html += `<tr><td>${data['date']}</td><td>${data['open']}</td><td>${data['high']}</td><td>${data['low']}</td><td>${data['close']}</td></tr>`
-				});
-				
-				html += '</tbody></table>';
-				console.log(ma_datas);
-				$(".result_table").html(html);
 
-			}).fail(function(response){
-
-				$(".result_table").html(response);
-			});	
-
-		}
-	</script>
 	<script>
 		const tagcontainer = document.getElementById('selected_tags');
 		// 既存: species_id をセット
@@ -305,7 +343,7 @@
 			$(".result_table").html("<p>読み込み中...</p>");
 			
 			$.ajax({
-				url: 'random_data.php',
+				url: 'mock_data.php',
 				type: 'POST',
 				dataType: 'json',
 				data: {
@@ -420,7 +458,7 @@
 
 		function fetchRegionsName(){
 			$.ajax({
-				url: 'get_regions_name.php',
+				url: 'mock_rg.php',
 				type: 'POST',
 				dataType: 'json',
 			data: {

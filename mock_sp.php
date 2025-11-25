@@ -1,3 +1,5 @@
+//デモデータ
+
 <?php
 function set_list($genre_name){
 
@@ -28,3 +30,4 @@ function set_list($genre_name){
     }
 }
 ?>
+

@@ -260,8 +260,8 @@
 				<div class="result_box"  id ="myTable">
 					<table class ="species_name" id="trg_name"></table>
 					<table hidden>
-						<tr><td>【著作権について】産業新聞社の許可なく配信データを転送、複製、販売などの行為をすることはご遠慮願います。</td></tr>
-						<tr><td>産業新聞社調べ、調べ日ベース</td></tr>
+						<tr><td>【著作権について】</td></tr>
+						<tr><td>〇〇調べ、〇〇調べ日ベース</td></tr>
 					</table>
 					<div class="result_table"></div>
 
@@ -499,3 +499,4 @@
 
 </body>
 </html>
+

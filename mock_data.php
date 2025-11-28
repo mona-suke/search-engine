@@ -5,14 +5,6 @@ header('Content-Type: application/json; charset=utf-8');
 
 try {
 
-    // POSTから値取得（デモでは不要）
-    $table_name   = $_POST['table'] ?? 'demo_table';
-    $species_ids  = $_POST['species_list'] ?? ['1', '2'];
-    $regions_list = $_POST['regions_list'] ?? ['1', '2'];
-    $start_date   = $_POST['start_date'] ?? date('Y-m-d', strtotime('-10 days'));
-    $end_date     = $_POST['end_date'] ?? date('Y-m-d');
-    $limit        = isset($_POST['limit']) ? (int)$_POST['limit'] : 30;
-
     $hasRegion = true; // デモでは regions を有効
 
     // デモ用マスタ
@@ -48,7 +40,6 @@ try {
         $current = strtotime('+1 day', $current);
     }
 
-    // クロス集計用データ生成
     if ($hasRegion) {
         $data = [];
         $species_list = [];
@@ -77,7 +68,6 @@ try {
         ], JSON_UNESCAPED_UNICODE);
     } 
     else {
-        // ノーマルデータ版
         $columns = ['価格(円)', '価格（ドル）'];
         $data = [];
         $species_list = [];
@@ -105,5 +95,6 @@ try {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()], JSON_UNESCAPED_UNICODE);
 }
+
 
 
